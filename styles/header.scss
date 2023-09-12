@@ -1,0 +1,58 @@
+.header{
+    min-height: 100vh;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    &_content{
+        color: white;
+        width: 90%;
+        min-height: 100vh;
+        max-width: 40rem;
+        padding-top: 15.8rem;
+        padding-left: 9.8rem;
+        h1{
+            font-size: 4.8rem;
+            font-weight: 700;
+        }
+        h5{
+            font-size: 1.4rem;
+            letter-spacing: .3px;
+            font-weight: 400;
+        }
+        button{
+            margin: 1.6rem 0;
+            text-transform: uppercase;
+            svg{
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+    }
+}
+.info{
+    padding: 1.85rem 0;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 36rem;
+    .idmb{
+        width: 3.5rem;
+        height: 1.7rem;
+        margin-right: 1rem;
+    }
+    .item{
+        width: 1.7rem;
+        height: 1.7rem;
+        margin-left: 3.4rem;
+        margin-right: 1rem;
+    }
+}
+@media screen and (max-width:900px) {
+    .header{
+        &_content{
+            padding:10rem 3rem 2rem;
+            max-width:max-content ;
+        }
+    }
+}

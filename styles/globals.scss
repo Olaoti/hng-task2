@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Poppins&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html{
+  font-size: 62.5%;
+}
+html,
+body {
+  max-width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'DM Sans', sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button{
+  background-color: #BE123C;
+  border:none;
+  padding: .6rem 1.6rem;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: .8rem;
+  border-radius: 6px;
+}
+button.light{
+  padding: .6rem 1.6rem;
+  border: 1px solid #BE123C;
+  background-color: #F8E7EB;
+  border-radius: 3px;
+  font-size: 1.5rem;
+  color: #B91C1C;
+}
+
+@import "../styles/header.scss";
+@import "../styles/navbar.scss";
+@import "../styles/sidebar.scss";
+@import "../styles/featured.scss";
+@import "../styles/movies.scss";
+
+
+

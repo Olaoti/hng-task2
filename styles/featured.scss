@@ -1,0 +1,68 @@
+.featured{
+    padding: 7rem 9.8rem;
+    position: static;
+    z-index: 1;
+    &_heading{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h2{
+            font-size: 3rem;
+        }
+        p{
+            color: #BE123C;
+            font-size: 1.8rem;
+        }
+    }
+    &_movies{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 6rem;
+        margin: 4rem 0;
+        height: 100%;
+        .image{
+            height: max-content;
+            aspect-ratio: 2/3;
+        }
+        .date{
+            color: #9CA3AF;
+            padding: 1rem 0;
+        }
+        .title{
+            color: #111827;
+            font-size: 1.8rem;
+            &:hover{
+                color: #BE123C;
+            }
+        }
+        .genres{
+            font-size: 1.2rem;
+        }
+    }
+}
+@media screen and (max-width:1000px) {
+    .featured{
+        padding: 5rem 2.4rem;
+        &_movies{
+            grid-template-columns: 1fr 1fr 1fr;
+            margin: 3rem 0;
+            gap: 3rem;
+        }
+    }
+}
+@media screen and (max-width:700px) {
+    .featured{
+        &_movies{
+            grid-template-columns: 1fr 1fr;
+            margin: 3rem 0;
+            gap: 3rem;
+        }
+    }
+}
+@media screen and (max-width:500px) {
+    .featured{
+        &_movies{
+            gap: 2rem;
+        }
+    }
+}
