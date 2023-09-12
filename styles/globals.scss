@@ -38,12 +38,24 @@ button.light{
   font-size: 1.5rem;
   color: #B91C1C;
 }
+.loading{
+  font-size: 2.4rem;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+  h4{
+    color: red;
+  }
+}
 
 @import "../styles/header.scss";
 @import "../styles/navbar.scss";
 @import "../styles/sidebar.scss";
 @import "../styles/featured.scss";
 @import "../styles/movies.scss";
+@import "../styles/footer.scss";
+
 
 
 

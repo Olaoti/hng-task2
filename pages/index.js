@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import Header from '../components/header'
 import Path from "../components/API"
 import Featured from '../components/featured';
+import Loading from '../components/loading';
+import Error from '../components/error';
+import Footer from '../components/footer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -56,18 +59,19 @@ export default function Home() {
 
   if(loading){
     return(
-      <div>Loading...</div>
+      <Loading/>
     )
   }
   if(error){
     return(
-      <div>error, {error.message}</div>
+      <div><Error message ={error.message}/></div>
     )
   }
   return (
     < div className='homepage'>
       <Header randommovie={movies&& randommovie}/>
       <Featured movies = {movies} genres={genres}/>
+      <Footer/>
     </div>
   )
 }

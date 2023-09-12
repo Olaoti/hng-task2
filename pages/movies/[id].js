@@ -5,6 +5,8 @@ import Sidebar from '../../components/sidebar';
 import Star from "../../public/star.svg"
 import Image from 'next/image';
 import Play from "../../public/bigplay.svg"
+import Loading from '../../components/loading';
+import Error from '../../components/error';
 
 function about_movie() {
     const {
@@ -59,12 +61,13 @@ function about_movie() {
   }, []);
   if(loading){
     return(
-      <div>Loading...</div>
+      <Loading/>
     )
   }
   if(error){
     return(
-      <div>error, {error.message}</div>
+      <div><Error message ={error.message}/></div>
+
     )
   }
   return (

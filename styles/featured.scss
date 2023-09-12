@@ -59,10 +59,21 @@
         }
     }
 }
-@media screen and (max-width:500px) {
+@media screen and (max-width:580px) {
     .featured{
         &_movies{
             gap: 2rem;
+            height: fit-content;
+            .image{
+                height: fit-content;
+            }
+        }
+    }
+}
+@media screen and (max-width:440px) {
+    .featured{
+        &_movies{
+           grid-template-columns: 1fr;
         }
     }
 }
