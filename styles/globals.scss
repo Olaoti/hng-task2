@@ -38,7 +38,7 @@ button.light{
   font-size: 1.5rem;
   color: #B91C1C;
 }
-.loading{
+.loading, .error{
   font-size: 2.4rem;
   display: grid;
   place-items: center;
@@ -46,6 +46,9 @@ button.light{
   height: 100vh;
   h4{
     color: red;
+  }
+  h5{
+    font-size: 2rem
   }
 }
 
