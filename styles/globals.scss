@@ -51,12 +51,51 @@ button.light{
     font-size: 2rem
   }
 }
-
+.hamburger{
+  &.mobile{
+      display: none;
+  }
+  height: 3.2rem;
+  width: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #BE123C;
+  width: fit-content;
+  border-radius: 50%;
+  padding:1.2rem .8rem;
+  cursor: pointer;
+  span{
+      display: block;
+      width: 1.6rem;
+      height: 1.6px;
+      background-color: white;
+      transition: all 200ms ease-in-out;
+  }
+  &.cancel{
+      justify-content: center;
+      span{
+          transform: rotate(45deg);
+          &:last-child{
+              transform: rotate(-45deg);
+              margin-top: -1.4px;
+          }
+      }
+  }
+}
+.favourites{
+  background-color: red;
+  position: fixed;
+  font-size: 3rem;
+  bottom: 0;
+  left: 0;
+}
 @import "../styles/header.scss";
 @import "../styles/navbar.scss";
 @import "../styles/sidebar.scss";
 @import "../styles/featured.scss";
 @import "../styles/movies.scss";
+@import "../styles/card.scss";
 @import "../styles/footer.scss";
 
 

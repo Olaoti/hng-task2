@@ -1,3 +1,64 @@
+.movies{
+    .navbar{
+        background-color: black;
+        z-index: 13;
+    }
+    .movies-sect{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding: 8rem 2rem;
+        gap: 4rem;
+    }
+    .nothere{
+
+        color: red;
+        font-size: 2.2rem;
+        padding: 2rem;
+        h5{
+            margin-top: 3rem;
+            color: black;
+        }
+        button{
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width:1000px) {
+    .movies{
+        .movies-sect{
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+    }
+}
+@media screen and (max-width:700px) {
+    .movies{
+        .movies-sect{
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+    }
+}
+@media screen and (max-width:580px) {
+    .movies{
+        .movies-sect{
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 0 2rem 2rem;
+            height: fit-content;
+            .image{
+                height: fit-content;
+            }
+        }
+    }
+}
+@media screen and (max-width:440px) {
+    .featured{
+        &_movies{
+           grid-template-columns: 1fr;
+        }
+    }
+}
 .movie-info{
     display: flex;
     width: 100%;
@@ -114,5 +175,55 @@
                 }
             }
         }
+    }
+}
+@media screen and (max-width:1200px) {
+    .movie-info{
+        .mainbar{
+            .movieinfo{
+                .image-sect{
+                    min-height: 15rem;
+                }
+                .heading{
+                    flex-wrap: wrap !important;
+                    .pg, .time{
+                        display: none;
+                    }
+                    span{
+                        &.none{
+                            display: none !important;
+                        }
+                    }
+                }
+                .movie_body{
+                    display: block !important;
+                    width: 100%;
+                    &_left{
+                        width: 100%;
+                        margin-bottom: 2rem;
+                    }
+                    .moreimage{
+                        display: none;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+@media screen and (max-width:650px) {
+    .hamburger{
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+    }
+    .movie-info{
+        display: block;
+            .sidebar{
+                position: fixed;
+                z-index: 14;
+
+            }  
+                 
     }
 }

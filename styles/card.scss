@@ -1,0 +1,20 @@
+.card{
+    .image{
+        height: max-content;
+        aspect-ratio: 2/3;
+    }
+    .date{
+        color: #9CA3AF;
+        padding: 1rem 0;
+    }
+    .title{
+        color: #111827;
+        font-size: 1.8rem;
+        &:hover{
+            color: #BE123C;
+        }
+    }
+    .genres{
+        font-size: 1.2rem;
+    }
+}

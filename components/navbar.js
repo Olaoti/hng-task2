@@ -2,8 +2,13 @@ import React,{useState, useEffect} from 'react'
 import Logo from "../public/logo.svg"
 import Search from "../public/search.svg"
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 function navbar() {
+const [inputed, setInputed] = useState('')
+const changelisten = (event)=>{
+  setInputed(event.target.value)
+}
 const [sidebarShow, setSidebarShow] = useState(false)
 const [show, handleShow] = useState(false);
   const handleScroll = () => {
@@ -29,8 +34,15 @@ const [show, handleShow] = useState(false);
             </div>
         </div>
           <div className='searchBox'>
-            <input type='search' placeholder='What do you want to watch?'/>
-            <div className='icon'><Search/></div>
+            <input type='search' placeholder='What do you want to watch?' onChange={changelisten}/>
+            <Link
+              href={{
+                pathname:'/movies/',
+                query:{name:inputed},
+              }}
+              className="link"
+            ><div className='icon'><Search/></div>
+            </Link>
           </div>
           <div className='options'>
             <div className='sign-in'>Sign in</div>

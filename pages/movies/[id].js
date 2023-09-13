@@ -15,6 +15,8 @@ function about_movie() {
       } = useRouter();
     var id = (asPath.split('/'))[2]
     
+const [sidebarShow, setSidebarShow] = useState(false)
+
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -72,7 +74,12 @@ function about_movie() {
   }
   return (
     <div className='movie-info'>
-      <Sidebar/>
+      <div className={`hamburger ${sidebarShow?('cancel'):('show')}`} onClick={()=>{setSidebarShow(!sidebarShow)}}>
+              <span></span>
+              <span></span>
+            </div>
+      {sidebarShow&&
+      (<Sidebar/>)}
       <div className='mainbar'>
       {movies?.filter(movie=>movie.id==id).map(movie=>{
         return(
@@ -87,13 +94,13 @@ function about_movie() {
               </div>
               </div>
               <div className='heading'>
-                <h5 className='title'>{movie?.title}</h5>
+                <h5 className='title' data-testid='movie-title'>{movie?.title}</h5>
                 <span className='circ'></span>
-                <h5>2020</h5>
-                <span className='circ'></span>
-                <h5>PG-13</h5>
-                <span className='circ'></span>
-                <h5>2h 10m</h5>
+                <h5 data-test-id='movie-release-date'>{movie?.release_date}</h5>
+                <span className='circ none'></span>
+                <h5 className='pg'>PG-13</h5>
+                <span className='circ none'></span>
+                <h5 className='time' data-testid='movie-runtime'>2h 10m</h5>
                 <div className='genres'>
                   {genres?.map(genre=>{
                       if (movie?.genre_ids.includes(genre.id)){
@@ -105,7 +112,7 @@ function about_movie() {
               </div>
               <div className='movie_body'>
                 <div className='movie_body_left'>
-                  <h3>{movie?.overview}</h3>
+                  <h3 data-testid='movie-overview'>{movie?.overview}</h3>
                   <h4>Director:<span>Joseph Kosinski</span></h4>
                   <h4>Writers:<span>Jim Cash, Jack Epps Jr,  Peter Craig</span></h4>
                   <h4>Stars:<span>Tom Cruise, Jennifer Connelly, Miles Teller</span></h4>
@@ -119,7 +126,7 @@ function about_movie() {
                   <button>See Showtimes</button>
                   <button className='light'>More watch options</button>
                   <div className='moreimage'>
-                    <Image src={'/moreimg.png'} alt='check out more' objectFit='cover' layout='fill'/>
+                    <Image src='/images/moreimg.png' alt='check out more' objectFit='cover' layout='fill'/>
                   </div>
                 </div>
               </div>

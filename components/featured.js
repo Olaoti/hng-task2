@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import Card from './card';
 import Path from "../components/API"
+import Link from 'next/link';
 
 
 function featured({movies, genres}) {
@@ -12,10 +13,12 @@ function featured({movies, genres}) {
           <h2>
             Featured Movie
           </h2>
+          <Link href={'/movies/'}>
           <p>See More </p>
+          </Link>
         </div>
         <div className='featured_movies'>
-          {movies.map((movie)=>{
+          {movies.filter(movie=>movies.indexOf(movie)<10).map(movie=>{
             return(
               <Card movie={movie} genres={genres}/>
             )
