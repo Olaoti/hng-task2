@@ -28,7 +28,6 @@ const {name} = router?.query;
         setMovies(
           result.results
         );
-        console.log(result.results)
       }
       catch(error){
         setError(error)
@@ -56,7 +55,6 @@ const {name} = router?.query;
     fetchGenre()
   }, []);
   const len = (movies?.filter(movie=>(movie?.title||movie?.original_title).includes(filt))).length
-  console.log(typeof(len))
   if(loading){
     return(
       <Loading/>
@@ -82,7 +80,7 @@ const {name} = router?.query;
       </div>
     )
   }
-  if(len==0){
+  if(filt&&len==0){
     return (
       <div className='movies' color='red'>
         <Navbar/>

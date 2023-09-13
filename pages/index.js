@@ -28,7 +28,6 @@ export default function Home() {
         setMovies(
           result.results
         );
-        console.log(result.results)
       }
       catch(error){
         setError(error)

@@ -1,3 +1,4 @@
 const API_KEY = "920c139c0c206685b9eefd32717d5220";
 const Path = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`
+
 export default Path
