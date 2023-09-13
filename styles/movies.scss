@@ -193,13 +193,8 @@
                 }
                 .heading{
                     flex-wrap: wrap !important;
-                    .pg, .time{
+                    .star{
                         display: none;
-                    }
-                    span{
-                        &.none{
-                            display: none !important;
-                        }
                     }
                 }
                 .movie_body{

@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react'
-import Path from "../../components/API"
 import { useRouter } from 'next/router';
 import Sidebar from '../../components/sidebar';
 import Star from "../../public/star.svg"
@@ -9,57 +8,38 @@ import Loading from '../../components/loading';
 import Error from '../../components/error';
 
 function about_movie() {
-    const {
-        asPath,
-        pathname,   
-      } = useRouter();
-    var id = (asPath.split('/'))[2]
-    
+  const router = useRouter();
+  var id = (router?.query?.id)
+  
 const [sidebarShow, setSidebarShow] = useState(false)
 
-  const [movies, setMovies] = useState([]);
+  const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [genres, setGenres] = useState([])
-
+  const API_KEY = "920c139c0c206685b9eefd32717d5220";
   
   useEffect(() => {
     async function fetchData() {
       try{
-        const response = await fetch(Path);
+          const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`);
+      
         if(!response.ok){
           throw `Error! Status: ${response.status}`
         }
         const result = await response.json()
-        setMovies(
-          result.results
+        setMovie(
+          result
         );
-        console.log(result.results)
+        console.log(result)
       }
       catch(error){
         setError(error)
       }
       finally{
         setLoading(false)
-
       }
       }
     fetchData();
-    async function fetchGenre(){
-      try{
-        const resp= await fetch ('https://api.themoviedb.org/3/genre/movie/list?api_key=920c139c0c206685b9eefd32717d5220')
-        if(!resp.ok){
-          throw `Error! Status: ${resp.status}`
-        }
-        const genre = await resp.json()
-        setGenres(genre.genres)
-      }catch(error){
-        setError(error)
-      }finally{
-        setLoading(false)
-      }
-    }
-    fetchGenre()
   }, []);
   if(loading){
     return(
@@ -81,8 +61,6 @@ const [sidebarShow, setSidebarShow] = useState(false)
       {sidebarShow&&
       (<Sidebar/>)}
       <div className='mainbar'>
-      {movies?.filter(movie=>movie.id==id).map(movie=>{
-        return(
             <div className='movieinfo' key={movie.id}>
               <div className='image-sect' style={{width:'100%', height:'100', position:'relative' }}>
               <Image src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} layout='fill' objectFit='cover' alt={movie?.title} unoptimized/>
@@ -100,15 +78,15 @@ const [sidebarShow, setSidebarShow] = useState(false)
                 <span className='circ none'></span>
                 <h5 className='pg'>PG-13</h5>
                 <span className='circ none'></span>
-                <h5 className='time' data-testid='movie-runtime'>2h 10m</h5>
+                <h5 className='time' data-testid='movie-runtime'>{movie?.runtime}</h5>
                 <div className='genres'>
-                  {genres?.map(genre=>{
-                      if (movie?.genre_ids.includes(genre.id)){
-                        return(<span key={genre.id}>{genre.name} </span>)
-                      }
-                })}</div>
-                <Star style={{width:'3rem', height:'3rem'}}/>
-                <h5><span>{(movie?.vote_average)}</span>/350k</h5>
+                  {movie?.genres?.map(genre=>{
+                  return(
+                    <span key={genre.id}>{genre.name}</span>
+                  )}
+                )}</div>
+                <Star style={{width:'3rem', height:'3rem'}} className='star'/>
+                <h5 className='star'><span>{(movie?.vote_average)}</span>/350k</h5>
               </div>
               <div className='movie_body'>
                 <div className='movie_body_left'>
@@ -132,8 +110,6 @@ const [sidebarShow, setSidebarShow] = useState(false)
               </div>
               
             </div>
-        )
-      })}
       </div>
     </div>
   )
