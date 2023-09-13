@@ -43,7 +43,7 @@ Client: Next.js, sass
 
 Server: TMDB API
 
-##Demo
+## Demo
 
 https://olaotitask2.vercel.app
 
