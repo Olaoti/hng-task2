@@ -8,18 +8,21 @@ import Loading from '../../components/loading';
 import Error from '../../components/error';
 
 function about_movie() {
+  var id = null
   const router = useRouter();
-  var id = (router?.query?.id)
   
 const [sidebarShow, setSidebarShow] = useState(false)
-
+useEffect(() => {
+}, [router.query]);
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const API_KEY = "920c139c0c206685b9eefd32717d5220";
-  
   useEffect(() => {
     async function fetchData() {
+  const { query } = router;
+   id = query.id;
+  if(id){
       try{
           const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`);
       
@@ -39,8 +42,10 @@ const [sidebarShow, setSidebarShow] = useState(false)
         setLoading(false)
       }
       }
+  }
+
     fetchData();
-  }, []);
+  }, [router.query]);
   if(loading){
     return(
       <Loading/>
@@ -49,7 +54,6 @@ const [sidebarShow, setSidebarShow] = useState(false)
   if(error){
     return(
       <div><Error message ={error.message}/></div>
-
     )
   }
   return (
